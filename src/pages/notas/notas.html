@@ -1,0 +1,52 @@
+<!--
+  Generated template for the NotasPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ tituloPagina }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-fab tio right edge>
+    <button ion-fab mini (click)="abreFormulario()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+  <div [hidden]="!abreForm" padding>
+    <ion-item>
+      <ion-label color="primary" stacked>Título</ion-label>
+      <ion-input type="text" [(ngModel)]="nota.Title" placeholder="Titulo da nota"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Descrição</ion-label>
+      <ion-input type="text" [(ngModel)]="nota.Body" placeholder="Descrição da nota"></ion-input>
+    </ion-item>
+    <p>
+      <button ion-button (click)="salvar()" color="primary" block>Salvar</button>
+    </p>
+  </div>
+
+  <ion-list [hidden]="abreForm">
+    <ion-item-sliding #opcoes *ngFor="let nota of notas">
+      <button ion-item (click)="abrirDetalhe(nota)">
+        <h2>{{nota.Title}}</h2>
+        <p>{{nota.Body}}</p>
+      </button>
+      <ion-item-options side="right">
+        <button ion-button color="primary" (click)="abreEditNota(nota, opcoes)">
+          <ion-icon name="create"></ion-icon>
+          Editar
+        </button>
+        <button ion-button color="danger" (click)="delete(nota, opcoes)">
+          <ion-icon name="trash"></ion-icon>
+          Deletar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

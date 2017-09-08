@@ -10,31 +10,41 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { NotasPage } from "../pages/notas/notas";
+import { WebserviceProvider } from "../providers/webservice/webservice";
+import { HttpModule } from "@angular/http";
+import { DetalhePage } from "../pages/detalhe/detalhe";
 
 @NgModule({
   declarations: [
     MyApp,
+    NotasPage,
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    DetalhePage
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     AboutPage,
+    NotasPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    DetalhePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    WebserviceProvider
   ]
 })
-export class AppModule {}
+export class AppModule { }
